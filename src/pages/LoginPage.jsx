@@ -17,7 +17,7 @@ export default function LoginPage () {
     useEffect(() => {
         if(localStorage.getItem('data')){
             const data = JSON.parse(localStorage.getItem("data"));
-            const URLPost = `${import.meta.env.VITE_API_URL}/signin`;
+            const URLPost = `${import.meta.env.VITE_API_URL}/`;
             const bodyPost = { email:data.email, password: data.password };
             
             axios.post(URLPost, bodyPost)
@@ -25,7 +25,7 @@ export default function LoginPage () {
                     console.log(response.data)
                     setToken(response.data);
                     localStorage.setItem('data', JSON.stringify({email:data.email, password:data.password, token:response.data.token}))
-                    navigate('/samurais', {state: response.data.name});
+                    navigate('/home', {state: response.data.name});
                 })
                 .catch(err => {
                     console.log(err)

@@ -11,7 +11,7 @@ export default function RegisterPage () {
     let [registerControl, setRegisterControl] = useState('part-1');
     let [name, setName] = useState('');
     let [cpf, setCPF] = useState('');
-    let [phone, setPhone] = useState('');
+    let [telephone, setTelephone] = useState('');
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
     let [confirmPassword, setConfirmPassword] = useState('');
@@ -22,12 +22,12 @@ export default function RegisterPage () {
         if ( password !== confirmPassword ) return alert('As senhas não coincidem.');
 
         const URL = `${import.meta.env.VITE_API_URL}/cadastro`;
-        const body = { name, cpf, phone, email, password };
+        const body = { name, cpf, telephone, email, password };
 
         axios.post(URL, body)
             .then(response => navigate('/'))
             .catch(err => {
-                console.log(err.config)
+                console.log(err)
             });
         
     }
@@ -41,8 +41,8 @@ export default function RegisterPage () {
                 <p>  Dados Pessoais </p>
                 <input type='text' placeholder='Nome' required value={name} onChange={e => setName(e.target.value)} />
                 <input type='text' placeholder='CPF (Ex: xxx.xxx.xxx-xx)' required value={cpf} onChange={e => setCPF(e.target.value)} />
-                <input type='text' placeholder='Telefone (Ex: (11)xxxxx-xxxx)' required value={phone} onChange={e => setPhone(e.target.value)} />
-                <SCButton disabled={!(name && cpf && phone)} onClick={() => setRegisterControl('part-2')} > Próximo </SCButton>
+                <input type='text' placeholder='Telefone (Ex: (11)xxxxx-xxxx)' required value={telephone} onChange={e => setTelephone(e.target.value)} />
+                <SCButton disabled={!(name && cpf && telephone)} onClick={() => setRegisterControl('part-2')} > Próximo </SCButton>
                 </>)}
 
                 {registerControl==='part-2' && (
