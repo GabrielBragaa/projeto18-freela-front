@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Logo from '../components/Logo';
 
 export default function RegisterPage () {
 
@@ -9,7 +10,7 @@ export default function RegisterPage () {
 
     let [registerControl, setRegisterControl] = useState('part-1');
     let [name, setName] = useState('');
-    let [city, setCity] = useState('');
+    let [cpf, setCPF] = useState('');
     let [phone, setPhone] = useState('');
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
@@ -21,12 +22,11 @@ export default function RegisterPage () {
         if ( password !== confirmPassword ) return alert('As senhas não coincidem.');
 
         const URL = `${import.meta.env.VITE_API_URL}/signup`;
-        const body = { name, city, phone, email, password };
+        const body = { name, cpf, phone, email, password };
 
         axios.post(URL, body)
             .then(response => navigate('/'))
             .catch(err => {
-                //alert(`O erro foi ${err.response.data.message}`);
                 console.log(err.config)
             });
         
@@ -40,9 +40,9 @@ export default function RegisterPage () {
                 <>
                 <p>  Dados Pessoais </p>
                 <input type='text' placeholder='Nome' required value={name} onChange={e => setName(e.target.value)} />
-                <input type='text' placeholder='Cidade' required value={city} onChange={e => setCity(e.target.value)} />
-                <input type='text' placeholder='Telefone' required value={phone} onChange={e => setPhone(e.target.value)} />
-                <SCButton disabled={!(name && city && phone)} onClick={() => setRegisterControl('part-2')} > Próximo </SCButton>
+                <input type='text' placeholder='CPF (Ex: xxx.xxx.xxx-xx)' required value={cpf} onChange={e => setCPF(e.target.value)} />
+                <input type='text' placeholder='Telefone (Ex: (11)xxxxx-xxxx)' required value={phone} onChange={e => setPhone(e.target.value)} />
+                <SCButton disabled={!(name && cpf && phone)} onClick={() => setRegisterControl('part-2')} > Próximo </SCButton>
                 </>)}
 
                 {registerControl==='part-2' && (
@@ -82,7 +82,7 @@ const SCRegisterForm = styled.form`
             font-family: 'Montserrat';
             font-style: normal;
             font-weight: 400;
-            font-size: 19.976px;
+            font-size: 15px;
             line-height: 25px;
             color:#2F4F4F;
             margin-left:11px;
@@ -93,20 +93,20 @@ const SCRegisterForm = styled.form`
         font-size: 22px;
         font-family: 'Montserrat';
         font-weight:700;
-        color:#000000;
+        color:#2F4F4F;
     }
 `
 
 const SCButton = styled.button`
     width:303px;
     height:45px;
-    background-color: #1C1C1C;
+    background-color: #05C653;
     border-radius: 5px;
     border:1px solid #DBDBDB;
     margin: 0 auto;
 
     font-family: 'Montserrat';
-    font-weight:400;
+    font-weight:500;
     font-size:20px;
     color:#ffffff;
 
