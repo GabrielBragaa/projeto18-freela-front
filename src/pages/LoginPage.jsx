@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
+import Logo from "../components/Logo";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 
@@ -56,13 +57,13 @@ export default function LoginPage () {
 
     return (
         <>
-            <Logo />
+            <Logo/>
             <SCLoginForm onSubmit={(e) => login(e)} >
-                <input type='email' placeholder='email' required value={email} onChange={e => setEmail(e.target.value)} />
-                <input type='password' placeholder='senha' required value={password} onChange={e => setPassword(e.target.value)} autoComplete="off" />
+                <input type='email' placeholder='E-mail' required value={email} onChange={e => setEmail(e.target.value)} />
+                <input type='password' placeholder='Senha' required value={password} onChange={e => setPassword(e.target.value)} autoComplete="off" />
                 <SCButton style={{fontSize:'20px'}} type='submit' >Entrar</SCButton>
             </SCLoginForm>
-            <SCButton onClick ={() => navigate('/cadastro')}>Quer criar uma conta? Cadastre-se!</SCButton>
+            <SCButton onClick ={() => navigate('/cadastro')}>Não tem uma conta? Cadastre-se!</SCButton>
         </>
     )
 }
@@ -101,17 +102,17 @@ const SCLoginForm = styled.form`
 const SCButton = styled.button`
     width:303px;
     height:45px;
-    background-color: #1C1C1C;
+    background-color: #05C653;
     border-radius: 5px;
     border:1px solid #DBDBDB;
     margin: 0 auto;
 
     font-family: 'Montserrat';
-    font-weight:400;
+    font-weight:500;
     font-size:15px;
     color:#ffffff;
 
     display:flex;
-    align-items:center;
+    align-items: center;
     justify-content:center;
 `
