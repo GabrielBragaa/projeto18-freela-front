@@ -19,12 +19,12 @@ export default function LoginPage () {
             const data = JSON.parse(localStorage.getItem("data"));
             const URLPost = `${import.meta.env.VITE_API_URL}/`;
             const bodyPost = { email:data.email, password: data.password };
-            
+
             axios.post(URLPost, bodyPost)
                 .then(response => {
                     console.log(response.data)
                     setToken(response.data);
-                    localStorage.setItem('data', JSON.stringify({email:data.email, password:data.password, token:response.data.token}))
+                    localStorage.setItem('data', JSON.stringify({email:data.email, password:data.password, token: response.data.token}))
                     navigate('/home', {state: response.data.name});
                 })
                 .catch(err => {
