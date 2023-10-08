@@ -21,7 +21,7 @@ export default function RegisterPage () {
 
         if ( password !== confirmPassword ) return alert('As senhas não coincidem.');
 
-        const URL = `${import.meta.env.VITE_API_URL}/signup`;
+        const URL = `${import.meta.env.VITE_API_URL}/cadastro`;
         const body = { name, cpf, phone, email, password };
 
         axios.post(URL, body)

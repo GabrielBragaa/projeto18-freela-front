@@ -28,7 +28,6 @@ export default function LoginPage () {
                     navigate('/samurais', {state: response.data.name});
                 })
                 .catch(err => {
-                    //alert(`O erro foi ${err.response.data}`)
                     console.log(err)
                 });
         }
@@ -39,7 +38,7 @@ export default function LoginPage () {
     function login(e) {
         e.preventDefault();
 
-        const URL = `${import.meta.env.VITE_API_URL}/signin`;
+        const URL = `${import.meta.env.VITE_API_URL}/`;
         const body = { email, password };
 
         axios.post(URL, body)
@@ -47,10 +46,10 @@ export default function LoginPage () {
                 console.log(response.data)
                 setToken(response.data);
                 localStorage.setItem('data', JSON.stringify({email, password, token:response.data.token, name:response.data.name}))
-                navigate('/samurais', {state: response.data.name});
+                navigate('/home', {state: response.data.name});
             })
             .catch(err => {
-                alert(`O erro foi ${err.response.data}`)
+                alert(`${err.response.data}`)
                 console.log(err.response)
             });
     }
