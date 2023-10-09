@@ -5,10 +5,13 @@ import { UserContext } from "./contexts/UserContext"
 import { useState } from "react"
 import HomePage from "./pages/HomePage"
 import CreatePage from "./pages/CreatePage"
+import MyPage from "./pages/MyPage"
+import Product from "./pages/ProductPage"
 
 function App() {
 
   let [token, setToken] = useState('');
+  let [productId, setProductId] = useState('');
 
   return (
     <BrowserRouter>
@@ -16,8 +19,10 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginPage />} />
           <Route path='/cadastro' element={<RegisterPage />} />
-          <Route path='/home' element={<HomePage />}/>
+          <Route path='/home' element={<HomePage productId={productId} setProductId={setProductId} />}/>
           <Route path='/anunciar' element={<CreatePage />} />
+          <Route path='/meus-produtos' element={<MyPage />} />
+          <Route path='/produto/:id' element={<Product productId={productId} setProductId={setProductId} />} />
         </Routes>
         </UserContext.Provider>
     </BrowserRouter>

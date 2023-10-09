@@ -69,8 +69,9 @@ export default function CreatePage () {
                     <div>
                         <SCNomeCampo>Categoria</SCNomeCampo>
                         <select value={category} onChange={e => setCategory(e.target.value)} required>
-                            <option value="Brinquedo">Brinquedo</option>
+                            
                             <option value="Eletrônico">Eletrônico</option>
+                            <option value="Brinquedo">Brinquedo</option>
                             <option value="Eletrodoméstico">Eletrodoméstico</option>
                             <option value="Imóvel">Imóvel</option>
                             <option value="Celular">Celular</option>

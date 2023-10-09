@@ -6,19 +6,18 @@ import { UserContext } from "../contexts/UserContext"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 
-export default function HomePage (props) {
+export default function MyPage () {
 
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const { token } = useContext(UserContext);
-    let {productId, setProductId} = props;
 
     useEffect(() => {
         if (!token) {
             navigate('/');
         };
 
-        const URL = `${import.meta.env.VITE_API_URL}/home`;
+        const URL = `${import.meta.env.VITE_API_URL}/meus-produtos`;
 
         axios.get(URL, {
             headers: {
@@ -43,33 +42,13 @@ export default function HomePage (props) {
         )
     }
 
-    console.log(productId)
-
-    function getProduct(id) {
-        setProductId(id)
-        const URL = `${import.meta.env.VITE_API_URL}/produto/${id}`
-
-        axios.get(URL, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
-        .then(response => {
-            navigate(`/produto/${id}`);
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
-
-
     return (
         <>
             <Header/>
             <SCDiv>
             {products.map(product => {
                 return (
-                    <SCDivProduct onClick={e => getProduct(product.id)}>
+                    <SCDivProduct>
                         <img src={product.picture}/>
                         <SCProductInfo>
                             <SCProducts>{product.name}</SCProducts>
@@ -92,7 +71,7 @@ const SCDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     justify-content: start;
     row-gap: 5px;
     margin-top: 55px;
