@@ -24,8 +24,8 @@ export default function LoginPage () {
                 .then(response => {
                     console.log(response.data)
                     setToken(response.data);
-                    localStorage.setItem('data', JSON.stringify({email:data.email, password:data.password, token: response.data.token}))
-                    navigate('/home', {state: response.data.name});
+                    localStorage.setItem('token', response.data)
+                    navigate('/home');
                 })
                 .catch(err => {
                     console.log(err)
@@ -45,8 +45,8 @@ export default function LoginPage () {
             .then(response => {
                 console.log(response.data)
                 setToken(response.data);
-                localStorage.setItem('data', JSON.stringify({email, password, token:response.data.token, name:response.data.name}))
-                navigate('/home', {state: response.data.name});
+                localStorage.setItem('token', response.data)
+                navigate('/home');
             })
             .catch(err => {
                 alert(`${err.response.data}`)

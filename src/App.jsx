@@ -4,6 +4,7 @@ import RegisterPage from "./pages/RegisterPage"
 import { UserContext } from "./contexts/UserContext"
 import { useState } from "react"
 import HomePage from "./pages/HomePage"
+import CreatePage from "./pages/CreatePage"
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<LoginPage />} />
           <Route path='/cadastro' element={<RegisterPage />} />
           <Route path='/home' element={<HomePage />}/>
+          <Route path='/anunciar' element={<CreatePage />} />
         </Routes>
         </UserContext.Provider>
     </BrowserRouter>
