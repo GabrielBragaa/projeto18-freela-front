@@ -13,8 +13,8 @@ export default function HeaderMain({name}) {
 
     return (
         <SCHeader>
-            <ion-icon name="person-circle-outline" onClick={() => navigate('/meus-servicos', {state: name})} ></ion-icon>
-            <p onClick={() => navigate('/samurais')} > Me Cansei </p>
+            <ion-icon name="person-circle-outline" onClick={() => navigate('/meus-produtos', {state: name})} ></ion-icon>
+            <img src={logo} onClick={() => navigate('/home')}/>
             <ion-icon name="exit-outline" onClick={logout} ></ion-icon>
         </SCHeader>
     )
@@ -38,9 +38,12 @@ const SCHeader = styled.div`
         color: #ffffff;
     }
     img {
-        width:100px;
-        height:60px;
+        max-width: 50px;
+        max-width: 50px;
+        width:auto;
+        height:auto;
         object-fit:cover;
+        margin-bottom: 6px;
     }
     p {
         font-size: 24px;

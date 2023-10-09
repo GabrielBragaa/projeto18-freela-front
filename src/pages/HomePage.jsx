@@ -36,7 +36,7 @@ export default function HomePage () {
         return (
             <>
                 <Header/>
-                <SCProducts>NAO CARREGOU</SCProducts>
+                <SCProducts>Carregando...</SCProducts>
             </>
         )
     }
