@@ -5,9 +5,9 @@ import ResetStyle from './assets/styles/ResetStyle.js'
 import { GlobalStyle } from './assets/styles/GlobalStyle.js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <>
     <ResetStyle />
     <GlobalStyle /> 
     <App />
-  </React.StrictMode>,
+  </>,
 )
