@@ -4,6 +4,7 @@ import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../contexts/UserContext"
 import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 export default function HomePage () {
 
@@ -59,6 +60,7 @@ export default function HomePage () {
                 )
             })}
             </SCDiv>
+            <Footer/>
         </>
 
     )
