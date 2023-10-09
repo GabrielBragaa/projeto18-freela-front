@@ -6,11 +6,12 @@ import { UserContext } from "../contexts/UserContext"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 
-export default function MyPage () {
+export default function MyPage (props) {
 
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const { token } = useContext(UserContext);
+    let {productId, setProductId} = props;
 
     useEffect(() => {
         if (!token) {
@@ -33,6 +34,23 @@ export default function MyPage () {
         
     }, []);
 
+    function getProduct(id) {
+        setProductId(id)
+        const URL = `${import.meta.env.VITE_API_URL}/produto/${id}`
+
+        axios.get(URL, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            navigate(`/produto/${id}`);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
     if (products.length === 0) {
         return (
             <>
@@ -48,7 +66,7 @@ export default function MyPage () {
             <SCDiv>
             {products.map(product => {
                 return (
-                    <SCDivProduct>
+                    <SCDivProduct onClick={e => getProduct(product.id)} >
                         <img src={product.picture}/>
                         <SCProductInfo>
                             <SCProducts>{product.name}</SCProducts>

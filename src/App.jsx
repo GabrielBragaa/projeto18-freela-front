@@ -21,7 +21,7 @@ function App() {
           <Route path='/cadastro' element={<RegisterPage />} />
           <Route path='/home' element={<HomePage productId={productId} setProductId={setProductId} />}/>
           <Route path='/anunciar' element={<CreatePage />} />
-          <Route path='/meus-produtos' element={<MyPage />} />
+          <Route path='/meus-produtos' element={<MyPage productId={productId} setProductId={setProductId} />} />
           <Route path='/produto/:id' element={<Product productId={productId} setProductId={setProductId} />} />
         </Routes>
         </UserContext.Provider>
